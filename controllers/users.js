@@ -10,14 +10,28 @@ module.exports = function(app) {
         res.render('create_user', {})
     })
 
+    // app.get('/loggedIn', (req, res) => {
+    //     res.render('loggedIn', {});
+    // })
+
     app.post('/loggedIn', (req, res) => {
         User.create(req.body).then((user) => {
             console.log(user);
-            res.redirect('/dashboard');
+            res.redirect('/choose_charities');
         }).catch((err) => {
             console.log(err.message);
         })
     })
 
+
+
+    // app.post('/crea', (req, res) => {
+    //     User.create(req.body).then((user) => {
+    //         console.log(user);
+    //         res.redirect('/dashboard');
+    //     }).catch((err) => {
+    //         console.log(err.message);
+    //     })
+    // })
 
 }
