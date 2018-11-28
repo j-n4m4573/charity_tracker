@@ -62,9 +62,3 @@ module.exports = function(app) {
         })
     // })
 }
-
-// I want to map out each json object into charity objects
-// steps to take json object to charity objects
-
-// iterate through object
-// then assign the json variables to the charity objects
