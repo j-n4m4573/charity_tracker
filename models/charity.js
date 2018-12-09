@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const charitySchema = new mongoose.Schema({
+const Charity = mongoose.model('Charity', {
     charityName: String,
-    charityDesc: String
+    irsClassification: Object,
+    mailingAddress: Object,
+    amount: String,
+    charityId: {type: Schema.Types.ObjectId, ref:'User'}
 });
 
-const charityModel = mongoose.model('Charity', charitySchema);
-
-module.exports = charityModel;
+module.exports = Charity;

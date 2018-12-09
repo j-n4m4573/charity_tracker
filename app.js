@@ -14,8 +14,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-const users = require('./controllers/users')(app)
-const charity = require('./controllers/charities')(app)
+const User = require('./controllers/users')(app)
+const Charities = require('./controllers/charities')(app)
+// require('./controllers/api/users')(app)
 
 const port = process.env.PORT || 3000
 
@@ -39,8 +40,6 @@ const port = process.env.PORT || 3000
 //   res.render('dashboard', { msg: `${char_data}`  });
 // })
 
-
-
 // app.get('/', (req, res) => {
 //     request("https://api.data.charitynavigator.org/v2/Organizations?app_id=91ce10fa&app_key=36925402a11f8a7e4795ad574baab864&pageSize=10&city=San%20francisco", function(err, res, body) {
 //         console.log(res && res.statusCode)
@@ -54,7 +53,6 @@ const port = process.env.PORT || 3000
 //     console.log(char_data)
 //     res.render('charity_data', { msg: char_data});
 // })
-
 
 app.listen(port)
 

@@ -55,7 +55,7 @@ body {
 }
 
 </style>
-        <form method="POST" action="/loggedIn" class="form-signin text-center">
+    <form method="POST" action="/users" class="form-signin text-center">
           <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
           <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
           <label for="inputEmail" class="sr-only">Email address</label>
@@ -67,9 +67,8 @@ body {
               <input type="checkbox" value="remember-me" name="remember me"> Remember me
             </label> -->
             <label>
-                <a href="/create_user">Create a new username and Password</a>
+                <a href="/user-new">Create a new username and Password</a>
             </label>
-          </div>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-      </form>
+    </form>

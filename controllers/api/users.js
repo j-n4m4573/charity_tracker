@@ -1,28 +1,24 @@
-const User = require('../models/user')
+const User = require('../../models/user')
 
 module.exports = function(app) {
 
-    // Show Login
-    app.get('/', (req, res) => {
-        res.render('login', {})
+    app.get('/api', (req, res) => {
+        // => Return Json
+console.log("running")
+            res.send({post: "post"})
+            // }
+        // res.render('create_user', {})
     })
 
-    // Show create user page
-    app.get('/user-new', (req, res) => {
-        res.render('user-new', {})
-    })
-    
-    // Show home
-    app.get('/home', (req, res) => {
-        res.render('home', {})
+    app.get('/create_user', (req, res) => {
+        res.render('create_user', {})
     })
 
-    // add charities to user
-    // app.post("/add_charities", (req, res) => {
-    //     User.find(
-    // } )
-    // Create new user
-    app.post('/users', (req, res) => {
+    // app.get('/loggedIn', (req, res) => {
+    //     res.render('loggedIn', {});
+    // })
+
+    app.post('/api/loggedIn', (req, res) => {
         User.create(req.body).then((user) => {
             console.log(user);
             res.redirect('/home');
