@@ -201,56 +201,37 @@ body {
           <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
 
           <div class="album py-5 bg-light">
-                  <div class="container">
+              <div class="container">
+                  <div class="row">
+                      {{#each charities}}
 
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="card mb-4 box-shadow">
-                          <img class="card-img-top" src="http://www.indianlink.com.au/wp-content/uploads/2012/12/Bali.jpg" alt="Card image cap">
-                          <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                              <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                              </div>
-                              <small class="text-muted">9 mins</small>
+                    <div class="col-md-4">
+                      <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="https://images.unsplash.com/photo-1500837744038-ec60054ed01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a6afec6e65db063cc6e263f5a955a54f&auto=format&fit=crop&w=1650&q=80" alt="Card image cap">
+                        <div class="card-body">
+                          <h4 class="card-text">{{this.charityName}}</h4>
+                          <p class="card-text">{{this.mailingAddress.streetAddress1}}</p>
+                          <p class="card-text">{{this.irsClassification.nteeClassification}}</p>
+                          <input  type="hidden" name="index" id="index" value="{{@index}}"/>
+                          <!-- <input  type="hidden" name="charityName" id="charityName" value="{{this.charityName}}"/>
+                          <input  type="hidden" name="mailingAddress " id="mailingAddress" value="{{this.mailingAddress}}"/>
+                          <input  type="hidden" name="irsClassification" id="irsClassification" value="{{this.irsClassification}}"/>
+                          <input  type="hidden" name="ein" id="ein" value="{{this.ein}}"/> -->
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <!-- ADD charities to user dashboard -->
+                              <form name={{charity}} action="/charities-new" method="POST">
+                              <button type="submit" class="btn btn-sm btn-info">Select</button>
+                              <button type="button" class="btn btn-sm btn-outline-info">More Info</button>
                             </div>
+                            <small class="text-muted">9 mins</small>
                           </div>
                         </div>
                       </div>
-
-          <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top"> src="http://www.indianlink.com.au/wp-content/uploads/2012/12/Bali.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                     </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
+                    {{/each}}
+                    </div>
                 </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-             <div class="card mb-4 box-shadow">
-               <img class="card-img-top" src="http://www.indianlink.com.au/wp-content/uploads/2012/12/Bali.jpg" alt="Card image cap">
-               <div class="card-body">
-                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                 <div class="d-flex justify-content-between align-items-center">
-                   <div class="btn-group">
-                     <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                     <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                   </div>
-                   <small class="text-muted">9 mins</small>
-                 </div>
-               </div>
-             </div>
-           </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

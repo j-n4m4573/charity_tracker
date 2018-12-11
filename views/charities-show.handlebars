@@ -12,15 +12,15 @@
               <img class="card-img-top" src="https://images.unsplash.com/photo-1500837744038-ec60054ed01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a6afec6e65db063cc6e263f5a955a54f&auto=format&fit=crop&w=1650&q=80" alt="Card image cap">
               <div class="card-body">
                 <h4 class="card-text">{{this.charityName}}</h4>
+                <p class="card-text">{{this.mailingAddress.streetAddress1}}</p>
                 <p class="card-text">{{this.irsClassification.nteeClassification}}</p>
-                <input  type="hidden" name="charityName" id="selectedCharity" value="{{this.charityName}}"/>
-                <input  type="hidden" name="irsClassification" id="irsClassification" value="{{this.irsClassification}}"/>
+
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                       <!-- ADD charities to user dashboard -->
                     <form action="/charities-new" method="POST">
-                    <button type="submit" class="btn btn-sm btn-info">Select</button>
-                    <button type="button" class="btn btn-sm btn-outline-info">More Info</button>
+                        <button type="submit" name="ein" value="{{this.ein}}" id="{{@index}}" class="btn btn-sm btn-info">Select</button>
+                        <button type="button" class="btn btn-sm btn-outline-info">More Info</button>
                   </div>
                   <small class="text-muted">9 mins</small>
                 </div>

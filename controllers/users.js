@@ -11,7 +11,7 @@ module.exports = function(app) {
     app.get('/user-new', (req, res) => {
         res.render('user-new', {})
     })
-    
+
     // Show home
     app.get('/home', (req, res) => {
         res.render('home', {})
