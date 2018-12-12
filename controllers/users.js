@@ -17,11 +17,7 @@ module.exports = function(app) {
         res.render('home', {})
     })
 
-    // add charities to user
-    // app.post("/add_charities", (req, res) => {
-    //     User.find(
-    // } )
-    // Create new user
+
     app.post('/users', (req, res) => {
         User.create(req.body).then((user) => {
             console.log(user);
@@ -32,17 +28,5 @@ module.exports = function(app) {
     })
 
 
-
-
-
-
-    // app.post('/crea', (req, res) => {
-    //     User.create(req.body).then((user) => {
-    //         console.log(user);
-    //         res.redirect('/dashboard');
-    //     }).catch((err) => {
-    //         console.log(err.message);
-    //     })
-    // })
 
 }
