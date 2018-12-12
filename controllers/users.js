@@ -17,15 +17,29 @@ module.exports = function(app) {
         res.render('home', {})
     })
 
-
+    // Create User
     app.post('/users', (req, res) => {
         User.create(req.body).then((user) => {
             console.log(user);
-            res.redirect('/home');
+            res.redirect(`/users/${user._id}`);
         }).catch((err) => {
             console.log(err.message);
         })
     })
+
+    // Show User
+    app.get('/users/:id', (req, res) => {
+        console.log(req.params)
+        User.findById(req.params.id).then((user) => {
+            console.log(user)
+            res.render('user-show', {user:user})
+        })
+    })
+
+
+
+
+
 
 
 

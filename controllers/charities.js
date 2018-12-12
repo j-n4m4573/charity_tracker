@@ -27,7 +27,7 @@ module.exports = function(app) {
         })
     });
 
-    // Create Charity
+    // Charities Create
     app.post('/charities-new', (req, response) => {
         var ein = req.body.ein
         var current = ""
@@ -45,12 +45,12 @@ module.exports = function(app) {
             new_response.charityId = current
         }
 
-            Charity.create(new_response).then((charity) => {
+        Charity.create(new_response).then((charity) => {
                 console.log(charity)
                 response.redirect('dashboard')
-                }).catch((err) => {
-                    console.log(err.message)
-                })
+            }).catch((err) => {
+                console.log(err.message)
+            })
         })
     })
 
@@ -71,14 +71,13 @@ module.exports = function(app) {
             res.redirect('charities-show')
     })
 
-    // Show charities
+    // Charities Index
     app.get('/charities-show', (req, response) => {
             request(`https://api.data.charitynavigator.org/v2/Organizations?app_id=91ce10fa&app_key=36925402a11f8a7e4795ad574baab864&pageSize=10&city=${city_choice}`, function(err, res, body) {
                 console.log(res && res.statusCode)
                 console.log(err)
                 char_response = JSON.parse(body)
                 response.render("charities-show", {charity: char_response})
-
                 })
 
     })
