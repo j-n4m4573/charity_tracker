@@ -36,6 +36,30 @@ module.exports = function(app) {
         })
     })
 
+    // Edit User
+    app.get('/reviews/:id/edit',(req, res) => {
+        User.findById(req.params.id).then((user) => {
+            res.render('user-edit', {user: user})
+        }).catch((err) => {
+            console.log(err.message);
+        })
+})
+    app.get('/my-account', (req, res) => {
+        res.render('my-account', {})
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
