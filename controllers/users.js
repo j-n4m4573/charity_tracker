@@ -12,7 +12,7 @@ module.exports = function(app) {
         res.render('user-new', {})
     })
 
-    // Show home
+    // Show homepage
     app.get('/home', (req, res) => {
         res.render('home', {})
     })
@@ -37,13 +37,24 @@ module.exports = function(app) {
     })
 
     // Edit User
-    app.get('/reviews/:id/edit',(req, res) => {
+    app.get('/users/:id/edit',(req, res) => {
         User.findById(req.params.id).then((user) => {
             res.render('user-edit', {user: user})
         }).catch((err) => {
             console.log(err.message);
         })
-})
+    })
+
+    // Delete User
+    app.delete('/users/:id', (req, res) => {
+        User.findByIdAndRemove(req.params.id).then((review) => {
+            res.redirect('/');
+        }).catch(err => {
+            console.log(err.message);
+        })
+    })
+
+    // Show my-account page
     app.get('/my-account', (req, res) => {
         res.render('my-account', {})
     })
