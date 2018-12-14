@@ -33,10 +33,9 @@ module.exports = function(app) {
             res.render('welcome', {user:user})
         })
     })
-    
+
     // Show User
     app.get('/users/:id', (req, res) => {
-        console.log(req.params)
         User.findById(req.params.id).then((user) => {
             console.log(user)
             res.render('user-show', {user:user})
@@ -45,6 +44,7 @@ module.exports = function(app) {
 
     // Edit User
     app.get('/users/:id/edit',(req, res) => {
+        console.log(req.params.id)
         User.findById(req.params.id).then((user) => {
             res.render('user-edit', {user: user})
         }).catch((err) => {

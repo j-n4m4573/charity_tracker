@@ -11,7 +11,8 @@ var char_data = []
 mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/charity_tracker');
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('charity_tracker/public'));
+app.use("/public", express.static("charity_tracker/public"));
+
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 

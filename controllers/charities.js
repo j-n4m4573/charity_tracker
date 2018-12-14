@@ -16,18 +16,22 @@ var current_user;
 // '/charities'
 module.exports = function(app) {
 
-    // Charities SHOW
+    // Show dashboard
     app.get('/dashboard', (req, res) => {
         User.find().sort({_id:-1}).limit(1).then((user) => {
             var userId = user[0]._id.toString()
-            console.log(userId)
             Charity.find({charityId: userId}).then((charities) => {
-        res.render('dashboard', {charities: charities})
+        res.render('dashboard', {user: user[0], charities: charities})
             })
         })
     });
 
-    // Charities Create
+    // Show Charity
+    app.get('/charities/:id', (req, res) => {
+
+    })
+
+    // Create Charities
     app.post('/charities-new', (req, response) => {
         var ein = req.body.ein
         var current = ""
@@ -54,14 +58,26 @@ module.exports = function(app) {
         })
     })
 
-    // Delete charity
+    // Delete Charities
     app.delete('/charity-delete', (req, res) => {
+    })
+
+    // app.delete('/reviews/:id', (req, res) => {
+    //     console.log("DELETE Review")
+    //     Review.findByIdAndRemove(req.params.id).then((review) => {
+    //         res.redirect('/');
+    //     }).catch(err => {
+    //         console.log(err.message);
+    //     })
+    // })
+
+    // Update charities
+    app.put('/charities/:id', (req, res) => {
 
     })
 
     // Post City
     app.post('/city-create', (req, res) => {
-
         city = req.body.state.toUpperCase()
          city_choice = req.body.state
             if(city_choice.indexOf(" ") !== -1) {
