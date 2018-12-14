@@ -8,7 +8,6 @@ var char_response;
 var char_arr;
 var city;
 var city_choice;
-var current_user;
 
 //SHOW
 // '/charities/:id'
@@ -50,7 +49,6 @@ module.exports = function(app) {
         }
 
         Charity.create(new_response).then((charity) => {
-                console.log(charity)
                 response.redirect('dashboard')
             }).catch((err) => {
                 console.log(err.message)

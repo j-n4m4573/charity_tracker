@@ -3,14 +3,18 @@ const app = express()
 const request = require('request')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 
 var exphbs = require('express-handlebars');
 var char_data = []
 
+
 mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/charity_tracker');
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride('_method'))
+
 app.use("/public", express.static("charity_tracker/public"));
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));

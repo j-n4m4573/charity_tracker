@@ -1,5 +1,5 @@
 const User = require('../models/user')
-
+global.current_user;
 module.exports = function(app) {
 
     // Show Login
@@ -20,7 +20,7 @@ module.exports = function(app) {
     // Create User
     app.post('/users', (req, res) => {
         User.create(req.body).then((user) => {
-            console.log(user);
+            current_user = user
             res.redirect(`/users/${user._id}`);
         }).catch((err) => {
             console.log(err.message);
@@ -37,24 +37,38 @@ module.exports = function(app) {
     // Show User
     app.get('/users/:id', (req, res) => {
         User.findById(req.params.id).then((user) => {
-            console.log(user)
+            // console.log(user)
             res.render('user-show', {user:user})
         })
     })
 
     // Edit User
     app.get('/users/:id/edit',(req, res) => {
-        console.log(req.params.id)
-        User.findById(req.params.id).then((user) => {
+        User.findById(current_user._id).then((user) => {
             res.render('user-edit', {user: user})
         }).catch((err) => {
             console.log(err.message);
         })
     })
 
+    app.put('/users/:id', (req, res) => {
+        User.findByIdAndUpdate(req.params.id, req.body).then((user) => {
+            res.redirect('/dashboard')
+        })
+    })
+
+//     app.put('/reviews/:id',(req, res) => {
+//     Review.findByIdAndUpdate(req.params.id, req.body).then((review) => {
+//         res.redirect(`/reviews/${review._id}`)
+//     })
+//         .catch(err => {
+//             console.log(err.message);
+//         })
+// })
+
     // Delete User
     app.delete('/users/:id', (req, res) => {
-        User.findByIdAndRemove(req.params.id).then((user) => {
+        User.findByIdAndRemove(current_user._id).then((user) => {
             res.redirect('/');
         }).catch(err => {
             console.log(err.message);
