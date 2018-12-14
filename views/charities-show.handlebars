@@ -18,7 +18,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                       <!-- ADD charities to user dashboard -->
-                    <form action="/charities-new" method="POST">
+                    <form action="/charities" method="POST">
                         <button type="submit" name="ein" value="{{this.ein}}" id="{{@index}}" class="btn btn-sm btn-info">Select</button>
                         <button type="button" class="btn btn-sm btn-outline-info">More Info</button>
                   </div>
@@ -29,7 +29,7 @@
           </div>
           {{/each}}
     </div>
-    <script>
+    <!-- <script>
     console.log(localStorage.getItem('Name'));
 
-    </script>
+    </script> -->

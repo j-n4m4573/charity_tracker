@@ -1,0 +1,24 @@
+<br>
+<div class="container">
+    <div class="row justify-content-md-center">
+
+      <div class="col-md-8">
+        <div class="card mb-6 box-shadow">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1500837744038-ec60054ed01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a6afec6e65db063cc6e263f5a955a54f&auto=format&fit=crop&w=1650&q=80" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-text">{{charity.charityName}}</h4>
+            <p class="card-text">{{charity.mailingAddress.streetAddress1}}</p>
+            <p class="card-text">{{charity.irsClassification.nteeClassification}}</p>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <form action="/charities/{{charity._id}}/edit" method="GET">
+                    <button type="submit"  class="btn btn-sm btn-info">Edit</button>
+                    <button type="submit" formaction="/users/{{charity._id}}?_method=DELETE" class="btn btn-sm btn-outline-info">Delete</button>
+              </div>
+              <small class="text-muted">9 mins</small>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

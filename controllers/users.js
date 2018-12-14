@@ -42,7 +42,7 @@ module.exports = function(app) {
         })
     })
 
-    // Edit User
+    // Show User edit page
     app.get('/users/:id/edit',(req, res) => {
         User.findById(current_user._id).then((user) => {
             res.render('user-edit', {user: user})
@@ -51,20 +51,12 @@ module.exports = function(app) {
         })
     })
 
+    // Update User
     app.put('/users/:id', (req, res) => {
         User.findByIdAndUpdate(req.params.id, req.body).then((user) => {
             res.redirect('/dashboard')
         })
     })
-
-//     app.put('/reviews/:id',(req, res) => {
-//     Review.findByIdAndUpdate(req.params.id, req.body).then((review) => {
-//         res.redirect(`/reviews/${review._id}`)
-//     })
-//         .catch(err => {
-//             console.log(err.message);
-//         })
-// })
 
     // Delete User
     app.delete('/users/:id', (req, res) => {

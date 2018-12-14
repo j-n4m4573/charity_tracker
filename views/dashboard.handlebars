@@ -220,7 +220,7 @@ body {
                           <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <!-- ADD charities to user dashboard -->
-                              <form name={{charity}} action="/charities-new" method="POST">
+                              <form  action="/charities/{{this._id}}" method="GET">
                               <button type="submit" class="btn btn-sm btn-info">Select</button>
                               <button type="button" class="btn btn-sm btn-outline-info">More Info</button>
                             </div>
