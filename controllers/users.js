@@ -27,6 +27,13 @@ module.exports = function(app) {
         })
     })
 
+    //Show welcome page
+    app.get('/welcome', (req, res) => {
+        User.findById(req.params.id).then((user) => {
+            res.render('welcome', {user:user})
+        })
+    })
+    
     // Show User
     app.get('/users/:id', (req, res) => {
         console.log(req.params)
@@ -47,7 +54,7 @@ module.exports = function(app) {
 
     // Delete User
     app.delete('/users/:id', (req, res) => {
-        User.findByIdAndRemove(req.params.id).then((review) => {
+        User.findByIdAndRemove(req.params.id).then((user) => {
             res.redirect('/');
         }).catch(err => {
             console.log(err.message);

@@ -1,146 +1,48 @@
-
-<style>
-/*
- * Globals
- */
-
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
-
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: .05rem solid #fff;
-}
-
-
-/*
- * Base structure
- */
-
-html,
-body {
-  height: 100%;
-  background-color: #333;
-  background-image: url(https://images.unsplash.com/photo-1469131792215-9c8aaff71393?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80); background-size: 110%;"
-}
-
-body {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -ms-flex-pack: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  color: #fff;
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-}
-
-.cover-container {
-  max-width: 42em;
-}
-
-
-/*
- * Header
- */
-.masthead {
-  margin-bottom: 2rem;
-}
-
-.masthead-brand {
-  margin-bottom: 0;
-}
-
-.nav-masthead .nav-link {
-  padding: .25rem 0;
-  font-weight: 700;
-  color: rgba(255, 255, 255, .5);
-  background-color: transparent;
-  border-bottom: .25rem solid transparent;
-}
-
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, .25);
-}
-
-.nav-masthead .nav-link + .nav-link {
-  margin-left: 1rem;
-}
-
-.nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
-}
-
-
-/*
- * Cover
- */
-.cover {
-  padding: 0 1.5rem;
-}
-.cover .btn-lg {
-  padding: .75rem 1.25rem;
-  font-weight: 700;
-}
-
-
-/*
- * Footer
- */
-.mastfoot {
-  color: rgba(255, 255, 255, .5);
-}
-
-</style>
-
-<div class="cover-container d-flex h-100 p-4 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">MG Associates</h3>
-          <nav class="nav nav-masthead ">
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">Featured Charities</a>
-            <a class="nav-link" href="#">Contact</a>
-          </nav>
-        </div>
-      </header>
-      <br>
-      <br>
-      <br>
-      <main role="main" class="inner cover text-center">
-        <h1 class="cover-heading">Welcome {{user.email}}</h1>
-        <br>
-        <p class="lead">Thanks for choosing us to help search and track your favorite charities. </p>
-        <p class="lead">
-        <br>
-          <a href="/home" class="btn btn-lg btn-secondary">Choose Charities</a>
-        </p>
-      </main>
-
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <!-- <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
-        </div>
-      </footer>
+<nav class="navbar navbar-light bg-light justify-content-between style="background-color: transparent;"
+">
+  <a class="navbar-brand">MG Charity Tracker</a>
+</nav>
+    <div class="jumbotron text-center" style="padding-bottom: 30%;padding-top: 15%; color:white; text-shadow: 1px 1px #808080;
+     background-image: url(https://images.unsplash.com/photo-1527821468487-b724210d296a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1b5545b02981bf0412633553afae9355&auto=format&fit=crop&w=1650&q=80); background-size: 200%; ">
+      <h1>Welcome</h1>
+      <p>{{user._id}}</p>
+        <p>Thanks for choosing us to keep track of your charities!</p>
+        <div class="row justify-content-md-center">
+            <div class="col-md-6">
+                <form method="POST" action="/city-create">
+                    <div class="input-group" >
+                        <input type="text" name="state" id="state" class="form-control" placeholder="Please select a state or city">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Go!</button>
+                            </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
     </div>
+    </form>
+<!-- <div class="row">
+    <div class=" col-lg-12">
+        <h4 style="font-family: Helvetica;">Featured Charities</h4>
+    </div>
+</div>
+    <div class="container">
+        <div class="row">
+            {{#each charity}}
+
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="https://images.unsplash.com/photo-1500837744038-ec60054ed01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a6afec6e65db063cc6e263f5a955a54f&auto=format&fit=crop&w=1650&q=80" alt="Card image cap">
+              <div class="card-body">
+                <h4 class="card-text" name= {{charity}}>{{this.charityName}}</h4>
+                <p class="card-text">{{this.irsClassification.nteeClassification}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-info">Select</button>
+                    <button type="button" class="btn btn-sm btn-outline-info">More Info</button>
+                  </div>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}} -->
